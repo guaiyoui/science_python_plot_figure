@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as mfm
+
+font_path_Linli_B = "./fonts/LinLibertine_RB.ttf"
+prop_Linli_B = mfm.FontProperties(fname=font_path_Linli_B, size=32, weight='light')
+mfm.fontManager.addfont(font_path_Linli_B)
+plt.rcParams['font.family'] = prop_Linli_B.get_name()
+
+y1 = np.array([0.1, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3])
+y2 = np.array([0.2, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.4])
+y3 = np.array([0.3, 0.4, 0.4, 0.4, 0.4, 0.5, 0.5, 0.5, 0.5])
+y4 = np.array([0.4, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6])
+
+x = np.array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
+
+
+edgecolors =  ["#689FBF", "#999999", "#377D22", '#5A6A37', "#F0855B", "#75140C", "#E06661"]
+
+fig, ax = plt.subplots() # 创建图实例
+ax.plot(x, y1, c=edgecolors[0], label='linear', marker='x') # 作y1 = x 图，并标记此线名为linear
+# ax.scatter(x, y1, c='r', marker='x')
+ax.plot(x, y2, c=edgecolors[6],label='quadratic', marker='o', markerfacecolor='white', markersize=7) #作y2 = x^2 图，并标记此线名为quadratic
+# ax.scatter(x, y2, c='b', marker='o')
+# ax.plot(x, y3, c=edgecolors[5], label='cubic', marker='s') # 作y3 = x^3 图，并标记此线名为cubic
+ax.set_xlabel('x label') #设置x轴名称 x label
+ax.set_ylabel('y label') #设置y轴名称 y label
+ax.set_title('Simple Plot') #设置图名为Simple Plot
+ax.legend() #自动检测要在图例中显示的元素，并且显示
+
+plt.show()
+plt.savefig("dot_line.png", dpi=600, bbox_inches='tight')
+plt.savefig("dot_line.pdf", dpi=600, bbox_inches='tight')
+
+
